@@ -26,7 +26,7 @@ export default {
     async login(e){
       e.preventDefault()
       let token = await userAPI.login(this.stuff)
-      // sessionStorage.setItem("auth_token", token)
+      sessionStorage.setItem("auth_token", token)
     }
   }
 }
