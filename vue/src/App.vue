@@ -1,0 +1,70 @@
+<template>
+  <div id="app">
+    <!-- This is the Root componet -->
+    <div id="nav" class="navbar">
+      <router-link class="nav-item" to="/about">About</router-link> |
+      <router-link class="nav-item" to="/">Home</router-link> |
+      <router-link class="nav-item" to="/recipe/new">Add Recipe</router-link>
+    </div>
+
+    <main>
+      <router-view/>
+    </main>
+
+    <Footer />
+  </div>
+</template>
+
+<script>
+import Footer from "./components/footer"
+export default {
+  components:{
+    Footer
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: 'Arvo', serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #000;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+#app * {
+  box-sizing: border-box;
+  /* margin: 0; */
+  /* padding: 0; */
+}
+h1, h2, h3, h4, h5, h6, p, span, div, nav, button{
+  color: #000;
+  text-decoration: none;
+  font-family: 'Arvo', serif;
+}
+h1{
+  font-family: 'Lora', serif;
+}
+#nav.navbar{
+  height: 3em;
+  line-height: 3em;
+  font-size: 1.5em;
+  background: #3bbd58;;
+}
+
+#nav a {
+  font-family: Arvo;
+  font-weight: bolder;
+  color: #000;
+}
+
+#nav a.router-link-exact-active {
+  color: #fff;
+}
+#app main {
+  min-height: 80vh;
+}
+</style>
