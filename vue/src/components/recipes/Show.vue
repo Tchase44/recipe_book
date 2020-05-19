@@ -6,9 +6,9 @@
         <Ingredient v-for="i in recipe.ingredients" v-bind:key="i.id" :item="i" />
       </ul>
     </div>
-    <div>
-      <span @click="adding" v-if="add" > Cancle [-] </span>
-      <span @click="adding" v-else > Add Ingredient [+]</span>
+    <div class="i-box">
+      <span class="point" @click="adding" v-if="add" > Cancle [-] </span>
+      <span class="point" @click="adding" v-else > Add Ingredient [+]</span>
       <IngredientForm v-if="add" :ingredient="blank" :create="true"/>
     </div>
     <Divider />
@@ -80,6 +80,7 @@ div.recipe{
   width:100%;
   max-width: 720px;
   min-height: 75vh;
+  margin: 0 auto;
 }
 .ingredient-list{
   width: 100%;
@@ -96,6 +97,12 @@ div.recipe{
 }
 .ingredient-list li {
   margin: 10px 0;
+}
+.point{
+  cursor: pointer;
+}
+div.direction-box{
+  margin: 0 auto;
 }
 pre {
   font-family: Arvo, sans-serif;
