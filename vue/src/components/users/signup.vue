@@ -34,15 +34,16 @@ export default {
       return (typeof(s1) === "string" && typeof(s2) === "string" && s1 === s2 )
     },
     emailCheck(email){
-      // super basic check
+      // super basic email check
       return (email.indexOf("@") !== -1 && email.indexOf(".") !== -1 && typeof(email) === "string" )
     }
   },
   async requestAccount(e){
     e.preventDefault();
-    if(passCheck(this.pUser.pasword,this.pUser.password_confirmation) && emailCheck(this.pUser.email)){
+    if(this.passCheck(this.pUser.pasword,this.pUser.password_confirmation) && this.emailCheck(this.pUser.email)){
       // ToDo: API activation email
       let success = await userApi.signUp(this.pUser)
+      success
     } else {
       this.vaild = "Please check your Email or Password"
     }

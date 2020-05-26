@@ -49,5 +49,13 @@ export default {
       console.log(err)
       return {error: err}
     })
+  },
+  // todo: remove
+  healthCheck: () => {
+    return axios.get(`http://localhost:3000/health`).then(data => {
+      return data
+    }).catch(err => {
+      return err
+    })
   }
 }

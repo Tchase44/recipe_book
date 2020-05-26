@@ -1,7 +1,7 @@
 # Copy/Paste from "https://www.sitepoint.com/introduction-to-using-jwt-in-rails/"
 class AuthenticationController < ApplicationController
   def authenticate_user
-    user = User.find_by(email: params[:authentication][:email])
+    user = User.find_by(email: params[:authentication][:email].downcase)
     if !user.nil? && user.valid_password?(params[:authentication][:password])
       auth_token = JsonWebToken.encode({user_id: user.id})
       render json: {auth_token: auth_token}, status: :ok

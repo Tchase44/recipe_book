@@ -29,6 +29,14 @@ export default new Vuex.Store({
     updateRecipe: (state, newR) => {
       let r = state.recipes.findIndex( r => r.id === newR.id)
       state.recipes[r] = newR
+    },
+    logOut: (state)=>{
+      state.logged_in = false
+      state.user_token = null
+    },
+    logIn:(state, token) => {
+      state.logged_in = true
+      state.user_token = token
     }
   },
   actions: {

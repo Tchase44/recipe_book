@@ -1,13 +1,14 @@
 <template>
   <div class="login" id="login">
     <div class="error"><p>{{error_message}}</p></div>
-    <form action="">
+    <form action="" @submit="login">
       <label for="email">email</label><br>
       <input type="text" name="email" class="" v-model="stuff.email"><br>
       <label for="password">password</label><br>
       <input type="password" name="password" class="" v-model="stuff.password"><br>
       <button @click="login">Login</button>
     </form>
+    <div><button @click="healthCheck">Health?</button></div>
   </div>
 </template>
 
@@ -30,9 +31,17 @@ export default {
       let token = await userAPI.login(this.stuff)
       if(token.auth_token){
         sessionStorage.setItem("auth_token", token.auth_token)
+        this.$store.commit('logIn',token.auth_token)
       }else{
         this.error_message = "Invalid Username/Password"
       }
+    },
+    healthCheck(){
+      userAPI.healthCheck().then(d=>{
+        console.log(d)
+      }).catch(e=>{
+        console.log(e)
+      })
     }
   }
 }

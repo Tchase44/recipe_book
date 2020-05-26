@@ -1,5 +1,5 @@
 class HealthController < ApplicationController
-  # before_action :authenticate_request! # <- protected routes
+  before_action :authenticate_request! # <- protected routes
   rescue_from ActiveRecord::RecordNotFound, :with => :db_check_failed
 
   def show

@@ -74,8 +74,8 @@ export default {
   /* line-height: 30px; */
   /* vertical-align: middle; */
 }
-.cancel{}
-.trash-box{}
+/* .cancel{} */
+/* .trash-box{} */
 .edit-icon{
   float: right;
   cursor: pointer;
