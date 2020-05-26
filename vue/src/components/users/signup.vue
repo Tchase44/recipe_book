@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3>Already have an account? <router-link to="/login">Log In</router-link></h3>
     <form @submit="requestAccount" action="">
       <label for="email">email</label><br>
       <input type="email" name="email" class="" required v-model="pUser.email"><br>

@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <!-- This is the Root componet -->
+    <div v-if="!loggedIN" id="logs"><router-link to="/login">login</router-link></div>
+    <!-- <div v-if="!loggedIN" id="logs"><router-link to="/login">log Out</router-link></div> -->
     <div id="nav" class="navbar">
-      <router-link class="nav-item" to="/about">About</router-link> |
+      <router-link v-if="loggedIN" class="nav-item" to="/my_account">Account |</router-link>
+      <router-link v-if="!loggedIN" class="nav-item" to="/about">About</router-link> |
       <router-link class="nav-item" to="/">Home</router-link> |
       <router-link class="nav-item" to="/recipe/new">Add Recipe</router-link>
     </div>
@@ -20,6 +23,11 @@ import Footer from "./components/footer"
 export default {
   components:{
     Footer
+  },
+  computed:{
+    loggedIN(){
+      return this.$store.getters.isLoggedIn
+    }
   }
 }
 </script>
@@ -66,5 +74,18 @@ h1{
 }
 #app main {
   min-height: 80vh;
+}
+#logs{
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1px solid #292929;
+  padding: 15px 5px 15px 5px;
+  border-radius: 180px;
+  /* background: #3bbd58; */
+  background: #292929;
+}
+#logs a {
+  color: #3bbd58;
 }
 </style>

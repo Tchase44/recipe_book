@@ -19,6 +19,9 @@ export default new Vuex.Store({
     },
     getNumRecipes: (state) => {
       return state.numRecipes
+    },
+    isLoggedIn: ( state ) => {
+      return state.logged_in
     }
   },
   mutations: {

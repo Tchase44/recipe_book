@@ -4,6 +4,7 @@ import Form from '../components/recipes/Form.vue'
 import RecipeNew from '../components/recipes/New.vue'
 import login from '../components/users/login.vue'
 import signUp from '../components/users/signup.vue'
+import Account from '../components/users/Account.vue'
 
 export default [
   {
@@ -48,5 +49,9 @@ export default [
   {
     path:"/sign_up",
     component: signUp
+  },
+  {
+    path:"/my_account",
+    component: Account
   }
 ]
