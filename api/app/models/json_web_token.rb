@@ -28,8 +28,9 @@ class JsonWebToken
     # 'sub' (Subject)
     {
       exp: 8.hours.from_now.to_i,
-      iss: "recipe book",
-      aud: "Vue Client"
+      iss: "recipe book api",
+      aud: "Vue Client",
+      iat: Time.now.to_i
     }
   end
 
