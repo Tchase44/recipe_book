@@ -4,8 +4,8 @@
     <div v-if="!loggedIN" id="logs"><router-link to="/login">login</router-link></div>
     <!-- <div v-if="!loggedIN" id="logs"><router-link to="/login">log Out</router-link></div> -->
     <div id="nav" class="navbar">
-      <router-link v-if="loggedIN" class="nav-item" to="/my_account">Account |</router-link>
-      <router-link v-if="!loggedIN" class="nav-item" to="/about">About</router-link> |
+      <router-link v-if="loggedIN" class="nav-item" to="/my_account">Account</router-link> |
+      <router-link class="nav-item" to="/about">About</router-link> |
       <router-link class="nav-item" to="/">Home</router-link> |
       <router-link class="nav-item" to="/recipe/new">Add Recipe</router-link>
     </div>

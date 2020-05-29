@@ -9,7 +9,7 @@ export default {
         email: userData.email
       }
     }).then( data => {
-      console.log(data)
+      // console.log(data)
       return data.data
     })
     .catch( err => {

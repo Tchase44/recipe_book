@@ -32,6 +32,7 @@ export default {
       if(token.auth_token){
         sessionStorage.setItem("auth_token", token.auth_token)
         this.$store.commit('logIn',token.auth_token)
+        this.$router.push('/')
       }else{
         this.error_message = "Invalid Username/Password"
       }

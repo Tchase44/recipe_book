@@ -6,7 +6,8 @@ class JsonWebToken
   end
 
   def self.decode token
-    JWT.decode(token, Rails.application.secrets.secret_key_base, nil, {algorith: 'HS384'})
+    # decode( token, secert_seed, verify, algorithm)
+    JWT.decode(token, Rails.application.secrets.secret_key_base, true, {algorith: 'HS384'})
   end
 
   # Validates the payload hash for expiration and meta claims
@@ -27,7 +28,7 @@ class JsonWebToken
     # 'iat' (Issued At)
     # 'sub' (Subject)
     {
-      exp: 8.hours.from_now.to_i,
+      exp: 4.hours.from_now.to_i,
       iss: "recipe book api",
       aud: "Vue Client",
       iat: Time.now.to_i

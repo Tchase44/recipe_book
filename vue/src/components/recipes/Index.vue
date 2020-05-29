@@ -19,6 +19,7 @@
 
 <script>
 import apiService from '../../services/RecipeApi'
+
 export default {
   name: 'RecipeIndex',
   props: {

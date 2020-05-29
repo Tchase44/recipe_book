@@ -22,6 +22,13 @@ export default new Vuex.Store({
     },
     isLoggedIn: ( state ) => {
       return state.logged_in
+    },
+    getTokenData:(state) => {
+      if(state.logged_in && state.user_token){
+        return state.user_token.split(".")[1]
+      }else{
+        return null
+      }
     }
   },
   mutations: {
