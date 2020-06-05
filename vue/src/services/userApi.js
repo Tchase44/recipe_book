@@ -29,7 +29,7 @@ export default {
     })
   },
   passwordChange:(userInfo = {})=>{
-    return axios.put(`http://localhost:3000/user/password`,
+    return axios.put(`http://localhost:3000/users/password`,
     {user: userInfo}
     ).then( data => {
       return data.data
@@ -46,6 +46,16 @@ export default {
       return data.data
     })
     .catch( err => {
+      console.log(err)
+      return {error: err}
+    })
+  },
+  changeUsername: (userInfo = {}) => {
+    return axios.put(`https://localhost:3000/users`,
+    {account_update: userInfo}
+    ).then( data => {
+      return data.data
+    }).catch(err=>{
       console.log(err)
       return {error: err}
     })

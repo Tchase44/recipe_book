@@ -15,6 +15,7 @@ const router = new VueRouter({
 
 router.beforeEach( (to,form,next) => {
   if(store.getters.isLoggedIn && store.getters.getTokenData){
+    console.log("triggered LoggedIn")
     let t = JSON.parse(atob(store.getters.getTokenData))
     let exp = new Date(0)
     exp.setUTCSeconds(t.exp)
@@ -41,6 +42,7 @@ router.beforeEach( (to,form,next) => {
         break;
     }
   }else{
+    console.log("not logged in")
     next()
   }
 })
