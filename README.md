@@ -17,12 +17,16 @@ $ npm run serve
 
 ## Rails API Back End
 
-### Start Server
+### Clean Setup
 ```
 $ cd api
+$ bin/bundle install
+$ bin/rails db:create db:migrate db:seed
+```
+### Start Server
+```
 $ bin/rails s
 ```
-
 * Ruby version
 2.6.5
 * Rails version
@@ -46,6 +50,8 @@ _n/a_
 _n/a_
 * ...
 
+## Other Commands ans Misc
+
 ### Compiles Vue Front-end and minifies for production
 ```
 yarn run build
@@ -62,3 +68,18 @@ yarn run lint
 ```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Icons
+[MIT Free Icons](https://github.com/refactoringui/heroicons/tree/master/src/outline-md)
+
+### Touch events
+* show symbol if ingredient has a "tip"
+  * tap to view or close
+* swipe ingredient to edit?
+
+### features
+* checkboxes?
+* user accounts
+* metadata? > rating,difficulty,time,
+* sort order for recipe index
+* sort order for ingredients
