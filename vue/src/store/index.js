@@ -29,6 +29,13 @@ export default new Vuex.Store({
       }else{
         return null
       }
+    },
+    token:(state) => {
+      if(state.logged_in && state.user_token){
+        return state.user_token
+      }else{
+        return null
+      }
     }
   },
   mutations: {
@@ -45,6 +52,7 @@ export default new Vuex.Store({
       state.user_token = null
     },
     logIn:(state, token) => {
+      sessionStorage.setItem('send',token)
       state.logged_in = true
       state.user_token = token
     }

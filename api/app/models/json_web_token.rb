@@ -29,7 +29,7 @@ class JsonWebToken
     # 'sub' (Subject)
     # exp: 4.hours.from_now.to_i,
     {
-      exp: 5.minutes.from_now.to_i,
+      exp: 1.hours.from_now.to_i,
       iss: "recipe book api",
       aud: "Vue Client",
       iat: Time.now.to_i
