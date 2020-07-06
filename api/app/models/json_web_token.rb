@@ -7,7 +7,7 @@ class JsonWebToken
 
   def self.decode token
     # decode( token, secert_seed, verify, algorithm)
-    JWT.decode(token, Rails.application.secrets.secret_key_base, true, {algorith: 'HS384'})
+    JWT.decode(token, Rails.application.secrets.secret_key_base, false, {algorith: 'HS384'})
   end
 
   # Validates the payload hash for expiration and meta claims

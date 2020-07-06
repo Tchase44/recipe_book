@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-
+# todo: see if devise interferes with these routes as well
 class Users::PasswordsController < Devise::PasswordsController
-  # before_action :authenticate_request! # <- protected routes
+  before_action :authenticate_request! # <- protected routes
   # GET /resource/password/new
   # def new
   #   super
@@ -18,9 +18,13 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   # PUT /resource/password
-  # def update
-  #   super
-  # end
+  def update
+    # super
+    if params[:user][:id] == current_user.id && params[:user][:username] == current_user.username
+      
+    else
+    end
+  end
 
   # protected
 

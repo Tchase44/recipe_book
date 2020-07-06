@@ -8,10 +8,11 @@ Rails.application.routes.draw do
 
   devise_for :users, skip: [:sessions, :registrations]
   as :user do
-    # put  "users/password/update", :to => "users/passwords#update"
     post "/sign_up", to: "users/registrations#create"
-    put "users", to: "users/registrations#update"
-    delete "users", to: "users/registrations#destroy"
+    put  "/users/password", :to => "users/passwords#update"
+    get "/user/username", to: "users/username#show"
+    put "/user/username", to: "users/username#update"
+    delete "/users", to: "users/registrations#destroy"
   end
 
   # login

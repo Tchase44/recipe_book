@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_request!, only[:update, :destroy] # <- protected routes
+  # before_action :authenticate_request!, only[:update, :destroy] # <- protected routes
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -39,9 +39,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /users
-  def update
+  # def update
     # super
-  end
+  # end
 
   # DELETE /users
   def destroy
@@ -65,9 +65,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
-  end
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+  # end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

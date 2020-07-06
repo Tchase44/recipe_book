@@ -50,22 +50,24 @@ export default {
       return {error: err}
     })
   },
+  getMyUsername: () => {
+    return axios.get(
+      `http://localhost:3000/user/username`
+    ).then( data => {
+      return data.data
+    }).catch( err => {
+      console.log(err)
+      return {error: err}
+    })
+  },
   changeUsername: (userInfo = {}) => {
-    return axios.put(`https://localhost:3000/users`,
+    return axios.put(`http://localhost:3000/user/username`,
     {account_update: userInfo}
     ).then( data => {
       return data.data
     }).catch(err=>{
       console.log(err)
       return {error: err}
-    })
-  },
-  // todo: remove
-  healthCheck: () => {
-    return axios.get(`http://localhost:3000/health`).then(data => {
-      return data
-    }).catch(err => {
-      return err
     })
   }
 }
