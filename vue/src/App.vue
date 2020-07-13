@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style>
+div#app *{
+  --green-color: #3bbd58;
+  --black-color: #292929;
+}
 #app {
   font-family: 'Arvo', serif;
   /* font-family: Avenir, Helvetica, Arial, sans-serif; */

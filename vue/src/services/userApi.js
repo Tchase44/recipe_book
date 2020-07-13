@@ -30,7 +30,7 @@ export default {
   },
   passwordChange:(userInfo = {})=>{
     return axios.put(`http://localhost:3000/users/password`,
-    {user: userInfo}
+    {account_update: userInfo, password: null}
     ).then( data => {
       return data.data
     })

@@ -4,8 +4,16 @@
     <!-- <Divider /> -->
     <div @click="logout"><p>Log Out</p></div>
     <!-- <Divider /> -->
-    <div>
-      <div class="message-box"><h4>{{m}}</h4></div>
+    <div class=message-con>
+      <div v-if="m" class="message-box">
+        <h3>{{m}}</h3>
+        <Loading/>
+      </div>
+      <div v-if="e" class="error-box">
+        <ul>
+          <li v-for="err in e" v-bind:key="err" >{{err}}</li>
+        </ul>
+      </div>
     </div>
     <Divider />
     <h4>Update Username</h4>
@@ -38,10 +46,12 @@
 <script>
 import userAPI from "../../services/userApi";
 import Divider from "../divider.vue";
+import Loading from "../loading"
 export default {
   name: "account",
   components:{
-    Divider
+    Divider,
+    Loading
   },
   data(){
     return {
@@ -57,11 +67,34 @@ export default {
     }
   },
   methods:{
+    goHome(seconds){
+      let s = seconds * 1000
+      setTimeout(() => {
+        this.$router.push({name:"Home"})
+      }, s);
+    },
+    clearMsg(){
+      this.m  = null
+      this.e = null
+    },
     async updatePassword(e){
       e.preventDefault()
-      let passChange = await userAPI.passwordChange(this.account)
-      console.log(passChange)
-      // this.m = passChange
+      this.clearMsg()
+      let passChange = await userAPI.passwordChange(
+        {
+          id: this.account.id,
+          current_password: this.account.current_password,
+          password: this.account.new_password,
+          password_confirmation: this.account.password_confirmation
+        }
+      )
+      if(passChange.message){
+        this.m = passChange.message
+        this.goHome(3)
+      }
+      else{
+        this.e = passChange.error
+      }
     },
     async deleteAccount(e){
       e.preventDefault()
@@ -74,6 +107,7 @@ export default {
     },
     async updateUsername(e){
       e.preventDefault()
+      this.clearMsg()
       let res = await userAPI.changeUsername(
         {
           username: this.account.username,
@@ -82,6 +116,7 @@ export default {
       )
       if(res.message === "Change Successful"){
         this.m = res.message
+        this.goHome(4)
       }else{
         this.m = "Error Updating username, It may already exsist"
       }
@@ -111,6 +146,18 @@ export default {
 
   form.passwords {
     overflow: hidden;
+  }
+
+  div.message-box, div.error-box {
+    width: 50%;
+    margin: 0 auto;
+  }
+  div.message-box h3{
+    color: var(--green-color);
+  }
+  div.error-box{
+    color: rgb(167, 0, 0);
+    font-size: 0.9em;
   }
 
   div.passbox {

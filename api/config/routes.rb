@@ -6,13 +6,13 @@ Rails.application.routes.draw do
 
   # devise_for :users # <- pregenerated views
 
-  devise_for :users, skip: [:sessions, :registrations]
+  devise_for :users, skip: [:sessions, :registrations, :passwords]
   as :user do
-    post "/sign_up", to: "users/registrations#create"
-    put  "/users/password", :to => "users/passwords#update"
-    get "/user/username", to: "users/username#show"
-    put "/user/username", to: "users/username#update"
-    delete "/users", to: "users/registrations#destroy"
+    post "/sign_up", to: "users/registrations#create", default: {format: :json}
+    put  "/users/password", :to => "users/passwords#update", default: {format: :json}
+    get "/user/username", to: "users/username#show", default: {format: :json}
+    put "/user/username", to: "users/username#update", default: {format: :json}
+    delete "/users", to: "users/registrations#destroy", default: {format: :json}
   end
 
   # login
