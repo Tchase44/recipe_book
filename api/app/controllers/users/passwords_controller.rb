@@ -20,6 +20,7 @@ class Users::PasswordsController < ApplicationController
     # double check the user
     if user.id == current_user.id && user.username == current_user.username
       # update the passwords
+      
       if user.update_with_password(password_params)
         render json: {message: "Update Successful!"}
       else
